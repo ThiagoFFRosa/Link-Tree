@@ -17,9 +17,29 @@
         }
         
         #logo {
-            margin-bottom: 1px;
+            margin-bottom: 20px;
         }
         
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .tab {
+            margin: 0 15px;
+            padding: 10px;
+            cursor: pointer;
+            background-color: #3b3b3b;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .tab:hover {
+            background-color: #8c8c8c;
+        }
+
         .button-container {
             display: flex;
             flex-direction: column;
@@ -54,13 +74,34 @@
         <img src="Logo.png" alt="Logo" width="200">
     </div>
 
+    <!-- Abas de navegação -->
+    <div class="tabs">
+        <button class="tab" id="socialTab" onclick="showTab('social')">Social</button>
+        <button class="tab" id="contactTab" onclick="showTab('contact')">Contato para Serviços</button>
+    </div>
+
     <!-- Contêiner dos botões -->
-    <div class="button-container">
+    <div id="social" class="button-container" style="display: block;">
         <a href="https://github.com/ThiagoFFRosa" target="_blank"><button>GitHub</button></a>
-        <a href="https://wa.me/12997911512" target="_blank"><button>WhatsApp</button></a>
         <a href="https://www.instagram.com/thiago_rats/" target="_blank"><button>Instagram</button></a>
+        <a href="https://www.twitch.tv/fuzz_rats" target="_blank"><button>Twitch</button></a>
+    </div>
+
+    <div id="contact" class="button-container" style="display: none;">
+        <a href="https://wa.me/12997911512" target="_blank"><button>WhatsApp</button></a>
         <a href="https://discord.gg/T2AQrGNJbS" target="_blank"><button>Discord</button></a>
     </div>
+
+    <script>
+        function showTab(tab) {
+            // Esconde todos os tabs
+            document.getElementById('social').style.display = 'none';
+            document.getElementById('contact').style.display = 'none';
+
+            // Exibe o tab selecionado
+            document.getElementById(tab).style.display = 'block';
+        }
+    </script>
 
 </body>
 </html>
