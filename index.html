@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,28 +10,30 @@
             font-family: Arial, sans-serif;
             display: flex;
             flex-direction: column;
-            align-items: center;
             justify-content: center;
+            align-items: center;
             height: 100vh;
             margin: 0;
-            background-color: #c8c8c8;
+            background-color: #232933;
         }
-        
+
         #logo {
             margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
         }
-        
+
         .tabs {
             display: flex;
             justify-content: center;
+            gap: 20px;
             margin-bottom: 20px;
         }
 
         .tab {
-            margin: 0 15px;
-            padding: 10px;
+            padding: 10px 20px;
             cursor: pointer;
-            background-color: #3b3b3b;
+            background-color: #545759;
             color: white;
             border: none;
             border-radius: 5px;
@@ -44,11 +47,8 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-        }
-
-        .button-container a {
-            text-decoration: none;
-            margin: 10px;
+            gap: 15px;
+            width: 100%;
         }
 
         .button-container button {
@@ -57,51 +57,106 @@
             cursor: pointer;
             border: none;
             border-radius: 5px;
-            background-color: #3b3b3b;
+            background-color: #545759;
             color: white;
             transition: background-color 0.3s ease;
+            width: 200px;
         }
 
         .button-container button:hover {
             background-color: #8c8c8c;
         }
+
+        .login_body {
+            padding: 40px;
+            z-index: 90;
+            position: relative;
+            max-width: 450px;
+            height: auto;
+            background-color: rgba(0, 0, 0, 0.376);
+            border-radius: 10px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .gradient {
+            --size: 750px;
+            --speed: 50s;
+            --easing: cubic-bezier(0.8, 0.2, 0.2, 0.8);
+
+            width: var(--size);
+            height: var(--size);
+            filter: blur(calc(var(--size) / 5));
+            background-image: linear-gradient(hsl(0, 0%, 74%), hssl(164, 100%, 50%));
+            animation: rotate var(--speed) var(--easing) alternate infinite;
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+        }
+
+        @media (min-width: 720px) {
+            .gradient {
+                --size: 500px;
+            }
+        }
+
+        body {
+            background-color: #333333;
+            position: absolute;
+            inset: 0;
+            display: flex;
+            place-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        /* This is just to transition when you change the viewport size. */
+        * {
+            transition: all 0.5s ease-out;
+        }
     </style>
 </head>
+
 <body>
+    
+        <div class="login_body">
+            <div id="logo">
+                <img src="Logo.png" alt="Logo" width="200">
+            </div>
 
-    <!-- Espaço para o logo -->
-    <div id="logo">
-        <img src="Logo.png" alt="Logo" width="200">
-    </div>
+            <div class="tabs">
+                <button class="tab" onclick="showTab('social')">Social</button>
+                <button class="tab" onclick="showTab('contact')">Serviço</button>
+            </div>
 
-    <!-- Abas de navegação -->
-    <div class="tabs">
-        <button class="tab" id="socialTab" onclick="showTab('social')">Social</button>
-        <button class="tab" id="contactTab" onclick="showTab('contact')">Contato para Serviços</button>
-    </div>
+            <div id="social" class="button-container">
+                <a href="https://github.com/ThiagoFFRosa" target="_blank"><button>GitHub</button></a>
+                <a href="https://www.instagram.com/thiago_rats/" target="_blank"><button>Instagram</button></a>
+                <a href="https://www.twitch.tv/fuzz_rats" target="_blank"><button>Twitch</button></a>
+            </div>
 
-    <!-- Contêiner dos botões -->
-    <div id="social" class="button-container" style="display: block;">
-        <a href="https://github.com/ThiagoFFRosa" target="_blank"><button>GitHub</button></a>
-        <a href="https://www.instagram.com/thiago_rats/" target="_blank"><button>Instagram</button></a>
-        <a href="https://www.twitch.tv/fuzz_rats" target="_blank"><button>Twitch</button></a>
-    </div>
-
-    <div id="contact" class="button-container" style="display: none;">
-        <a href="https://wa.me/12997911512" target="_blank"><button>WhatsApp</button></a>
-        <a href="https://discord.gg/T2AQrGNJbS" target="_blank"><button>Discord</button></a>
-    </div>
+            <div id="contact" class="button-container" style="display: none;">
+                <a href="https://wa.me/12997911512" target="_blank"><button>WhatsApp</button></a>
+                <a href="https://discord.gg/T2AQrGNJbS" target="_blank"><button>Discord</button></a>
+            </div>
+        </div>
 
     <script>
         function showTab(tab) {
-            // Esconde todos os tabs
             document.getElementById('social').style.display = 'none';
             document.getElementById('contact').style.display = 'none';
-
-            // Exibe o tab selecionado
-            document.getElementById(tab).style.display = 'block';
+            document.getElementById(tab).style.display = 'flex';
         }
     </script>
 
 </body>
+
 </html>
